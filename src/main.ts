@@ -129,4 +129,84 @@ console.log(
   activarProtocoloUrgencia(pacientes)
 );
 
+/* APARTADO 3 */
+console.log("%cAPARTADO 3", estilo);
 
+/* Reasignar a los pacientes de Pediatría a Médico de familia */
+
+const reasignaPacientesAMedicoFamilia = (
+  pacientes: Pacientes[]
+): Pacientes[] => {
+  const pacientesReasignados: Pacientes[] = pacientes.map((paciente) => {
+    if (paciente.especialidad === "Pediatra") {
+      return {
+        ...paciente,
+        especialidad: "Medico de familia",
+      };
+    }
+
+    return paciente;
+  });
+
+  return pacientesReasignados;
+};
+
+console.log(
+  "Lista de pacientes actualizada: ",
+  reasignaPacientesAMedicoFamilia(pacientes)
+);
+
+/* APARTADO 4 */
+console.log("%cAPARTADO 4", estilo);
+
+/* Comprobar si hay pacientes en pediatría */
+
+const hayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
+  const hayPacientesDePediatria = pacientes.some(
+    (paciente) => paciente.especialidad === "Pediatra"
+  );
+  return hayPacientesDePediatria;
+};
+
+console.log("¿Hay pacientes en pediatría?", hayPacientesDePediatria(pacientes));
+
+/* APARTADO 5 */
+console.log("%cAPARTADO 5", estilo);
+
+/* Calcular el número de pacientes que hay en la especialidad Medico de familia, Cardiología y Pediatría */
+
+interface NumeroPacientesPorEspecialidad {
+  medicoDeFamilia: number;
+  pediatria: number;
+  cardiologia: number;
+}
+
+const cuentaPacientesPorEspecialidad = (
+  pacientes: Pacientes[]
+): NumeroPacientesPorEspecialidad => {
+  let medicoDeFamilia = 0;
+  let pediatria = 0;
+  let cardiologia = 0;
+
+  pacientes.forEach((paciente) => {
+    switch (paciente.especialidad) {
+      case "Cardiólogo":
+        cardiologia++;
+        break;
+      case "Medico de familia":
+        medicoDeFamilia++;
+        break;
+      case "Pediatra":
+        pediatria++;
+        break;
+    }
+  });
+
+  return {
+    medicoDeFamilia: medicoDeFamilia,
+    cardiologia: cardiologia,
+    pediatria: pediatria,
+  };
+};
+
+console.log(cuentaPacientesPorEspecialidad(pacientes));
