@@ -111,4 +111,22 @@ console.log(
   obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes)
 );
 
+/* APARTADO 2 */
+console.log("%cAPARTADO 2", estilo);
+
+/* Crear una función que devuelve true si la frecuencia cardíaca es superior a 100ppm y la temperatura corporal superior a 39 grados*/
+
+const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
+  let activarProctolo: boolean = pacientes.some(
+    (paciente) => paciente.frecuenciaCardiaca > 100 && paciente.temperatura > 39
+  );
+
+  return activarProctolo;
+};
+
+console.log(
+  "¿Se debería activar el protocolo de urgencia?",
+  activarProtocoloUrgencia(pacientes)
+);
+
 
